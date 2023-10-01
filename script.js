@@ -119,12 +119,12 @@
 //     }
 // }
 
-// elementH3 = new HtmlElement('h3', true, 'What is Lorem Ipsum?');
-// elementImg = new HtmlElement('img', false,'', ['src="lipsum.jpg"', 'alt="Lorem Ipsum"'], ['width: 100%']);
-// elementA = new HtmlElement('a', true, 'More...', ['href="https://www.lipsum.com/"', 'target="_blank"']);
-// elementP = new HtmlElement('p', true, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever sinse the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.', [], ['text-align: justify'], [`${elementA.getHtml()}`]);
-// elementDiv = new HtmlElement('div', true, '', [], ['width: 300px', 'margin: 10px'], [`${elementH3.getHtml()}`, `${elementImg.getHtml()}`, `${elementP.getHtml()}`]);
-// elementDivWrapper = new HtmlElement('div', true, '', ['id="wrapper"'], ['display: flex'], [`${elementDiv.getHtml()}`, `${elementDiv.getHtml()}`]);
+// let elementH3 = new HtmlElement('h3', true, 'What is Lorem Ipsum?');
+// let elementImg = new HtmlElement('img', false,'', ['src="lipsum.jpg"', 'alt="Lorem Ipsum"'], ['width: 100%']);
+// let elementA = new HtmlElement('a', true, 'More...', ['href="https://www.lipsum.com/"', 'target="_blank"']);
+// let elementP = new HtmlElement('p', true, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever sinse the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.', [], ['text-align: justify'], [`${elementA.getHtml()}`]);
+// let elementDiv = new HtmlElement('div', true, '', [], ['width: 300px', 'margin: 10px'], [`${elementH3.getHtml()}`, `${elementImg.getHtml()}`, `${elementP.getHtml()}`]);
+// let elementDivWrapper = new HtmlElement('div', true, '', ['id="wrapper"'], ['display: flex'], [`${elementDiv.getHtml()}`, `${elementDiv.getHtml()}`]);
 
 // document.write(elementDivWrapper.getHtml());
 
@@ -140,6 +140,23 @@
 // ■ метод getCss(), который возвращает css код в виде стро-
 // ки.
 
+// class CssClass {
+//     constructor(title, arrayStyles = []) {
+//         this.title = title;
+//         this.arrayStyles = arrayStyles; 
+//     }
+//     setCss(styles) {
+//         this.arrayStyles = styles
+//     }
+//     delCss() {
+//         this.arrayStyles = [];
+//     }
+//     getCss() {
+//         return (this.arrayStyles);
+//     }
+// }
+
+
 
 // Задание 4
 // Реализовать класс, описывающий блок html документ.
@@ -153,3 +170,100 @@
 // элементов).
 // С помощью написанных классов реализовать следующий блок
 // (см. рис. 2) и добавить его на страницу с помощью document.write().
+
+// class CssClass {
+//     constructor(title, arrayStyles = []) {
+//         this.title = title;
+//         this.arrayStyles = arrayStyles; 
+//     }
+//     setCss(styles) {
+//         this.arrayStyles = styles
+//     }
+//     delCss() {
+//         this.arrayStyles = [];
+//     }
+//     getCss() {
+//         return (this.arrayStyles.join(''));
+//     }
+// }
+
+// let style1 = new CssClass;
+// let arrayOfStyles = (['.wrap {display: flex;}', '.block {width: 300px; margin: 10px;}', '.img {width: 100%;}', '.text {text-align: justify;}']);
+// style1.setCss(arrayOfStyles);
+
+// class HtmlElement {
+//     constructor(tagTitle, selfClosing, text, arrayAttributes = [], arrayStyles = [], arrayTags = []) {
+//         if (selfClosing == true) {
+//             this.tagTitle = `<${tagTitle}`;
+//             this.tagTitleEnd = '>'
+//         } else {
+//             this.tagTitle = `<${tagTitle} `;
+//             this.tagTitleEnd = ''
+//         }
+//         if (selfClosing == true) {
+//             this.selfClosing = `</${tagTitle}>`;
+//             this.selfClosingEnd = '';
+//         } else {
+//             this.selfClosing = '';
+//             this.selfClosingEnd = '>';
+//         }
+//         if (selfClosing == true) {
+//             this.text = text;
+//         } else {
+//             this.text = '';
+//         }
+//         this.arrayAttributes = arrayAttributes;
+//         this.arrayStyles = arrayStyles;
+//         if (this.arrayStyles.length > 0) {
+//             this.styleStart = 'style="';
+//             this.styleEnd = '" '
+//         } else {
+//             this.styleStart = '';
+//             this.styleEnd = ''
+//         }
+//         if ((this.arrayStyles.length > 0 || this.arrayAttributes.length > 0) && selfClosing == true) {
+//             this.tagTitleClose = ' '
+//         } else {
+//             this.tagTitleClose = ''
+//         }
+//         this.arrayTags = arrayTags;
+//     }
+    
+//     set setAttribute(attribute) {
+//         this.arrayAttributes.push(attribute)
+//     }
+//     set setStyle(style) {
+//         this.arrayStyles.push(style)
+//     }
+
+//     addTegEnd() {
+//         this.arrayTags.push(element)
+//     }
+//     addTegStart() {
+//         this.arrayTags.unshift(element)
+//     }
+//     getHtml() {
+//         return (`${this.tagTitle}${this.tagTitleClose}${this.styleStart}${this.arrayStyles.join('; ')}${this.styleEnd}${this.arrayAttributes.join(' ')}${this.tagTitleEnd}${this.text}${this.arrayTags.join('')}${this.selfClosing}${this.selfClosingEnd}`)
+//     }
+// }
+
+// let elementH3 = new HtmlElement('h3', true, 'What is Lorem Ipsum?');
+// let elementImg = new HtmlElement('img', false,'', ['class="img"', 'src="lipsum.jpg"', 'alt="Lorem Ipsum"']);
+// let elementA = new HtmlElement('a', true, 'More...', ['href="https://www.lipsum.com/"', 'target="_blank"']);
+// let elementP = new HtmlElement('p', true, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever sinse the 1500s. when an unknown printer took a galley of type and scrambled it to make a type specimen book.', ['class="text"'], [], [`${elementA.getHtml()}`]);
+// let elementDiv = new HtmlElement('div', true, '', ['class="block"'], [], [`${elementH3.getHtml()}`, `${elementImg.getHtml()}`, `${elementP.getHtml()}`]);
+// let elementDivWrapper = new HtmlElement('div', true, '', ['id="wrapper"', 'class="wrap"'], [], [`${elementDiv.getHtml()}`, `${elementDiv.getHtml()}`]);
+// let elementStyle = new HtmlElement('style', true, '', [], [], [`${style1.getCss()}`])
+
+// class HtmlBlock {
+//     constructor(styles = [], html) {
+//         this.styles = styles;
+//         this.html = html;
+//     }
+//     getCode() {
+//         return (`${this.styles}${this.html}`)
+//     }
+// }
+
+// let htmlBlock1 = new HtmlBlock(`${elementStyle.getHtml()}`, `${elementDivWrapper.getHtml()}`);
+// document.write(htmlBlock1.getCode());
